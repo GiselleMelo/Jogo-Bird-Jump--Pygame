@@ -75,3 +75,40 @@ class Jogo:
                     self.fim_eventos()
                     self.fim_draw()
                     self.clock.tick(fps)
+
+########################################### INICIAL ##################################################
+    #Método que configura a parte inicial e identificação dos personagens
+    # A princípio foi idealizado dois personagen, o Cláudio e o Roberto, 
+    # o qual será escolhido se selecionado a letra 'c' ou a letra 'r' respectivamente.
+    #OBS: Pretendemos mudar a seleção dos personagem para o estado de Transição
+
+    def ini_inicial(self):
+        #configurando o estado como INICIAL.
+        self.state = 'INICIAL'
+        #configura o estado do jogador a ser selecionado como uma string que irá receber uma informação.
+        self.jogador_selecionado = ''
+
+    #Método que define os eventos no estado inicial.
+    #A partir da tecla que a pessoa seleciona há uma iteração com o 'eventos'.
+    def ini_eventos(self):
+        #Analisa cada evento
+        for event in pygame.event.get():
+            #se for o caso de saída, ele sai:
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                #garantindo que saiu do jogo
+                sys.exit()
+            #Verifica se o botão espaço foi apertado e se o jogador foi selecionado
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.jogador_selecionado != '':
+                self.state = 'JOGANDO'
+            #seleciona o Cláudio para começar
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_c:
+                self.jogador_selecionado = 'claudio'
+            #Seleciona o Roberto para começar
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                self.jogador_selecionado = 'roberto'
+                
+    #Método que vai atualizar as informações recebidas no display
+    def ini_draw(self):
+        pygame.display.update()
+        pygame.Surface.fill(self.window,(255,255,255))
