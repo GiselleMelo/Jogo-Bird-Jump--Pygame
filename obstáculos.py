@@ -14,9 +14,9 @@ class Obstaculos(pygame.sprite.Sprite):
         
         pygame.sprite.Sprite.__init__(self)
         
-        #Carregando a imagem (deixamos como uma string vazia pois não a definimos ainda)
+        #Carregando a imagem 
         
-        self.image = pygame.image.load('').convert_alpha()
+        self.image = pygame.image.load('imagens/pipe.png').convert_alpha()
         
         #Formando um retângulo através da imagem
         
@@ -28,11 +28,11 @@ class Obstaculos(pygame.sprite.Sprite):
         
         # Espaço mínimo entre os obstáculos
         
-        gap = 50
+        self.gap = 120
         
         # Variação aleatória
         
-        self.rand = random.randint(-30,30)
+        self.rand = random.randint(-50,90)
 
         # Velocidade do obstáculo é equivalente a do chão:
         
@@ -40,15 +40,15 @@ class Obstaculos(pygame.sprite.Sprite):
         
         # Posição dos sprites
        
-        self.y = (HEIGHT/3) + 40 + self.rand
+        self.y = (HEIGHT/3) + self.rand
         
         #"if" que verifica a posição do obstáculo
         
         if posicao == 'topo':
             self.image = pygame.transform.flip(self.image,False,True)
-            self.rect.bottomleft = [WIDTH, self.y - gap]
+            self.rect.bottomleft = [WIDTH, self.y]
         if posicao == 'baixo':
-            self.rect.topleft = [WIDTH, self.y + gap ]
+            self.rect.topleft = [WIDTH, self.y]
     
     # Método que atualiza a disposição dos obstáculos    
     
