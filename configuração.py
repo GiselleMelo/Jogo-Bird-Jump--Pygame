@@ -22,7 +22,13 @@ def load_assets():
     #transformando para a escala do jogo
     assets['bg'] = pygame.transform.scale(assets['bg'],(WIDTH,HEIGHT))
     assets['ground'] = pygame.image.load('').convert()
+    # Importanto fontes
     assets['fonte'] = pygame.font.SysFont('Bauhaus 93',40)
-    assets['musica'] = 'musica'
-    assets['flap'] = 'barulho'
+    assets['fonte2'] = pygame.font.SysFont('Bauhaus 93',20)
+    assets['fonte3'] = pygame.font.SysFont('Bauhaus 93',47)
     return assets 
+
+# Função auxiliadora para exibir texto:
+def draw_texto(window,texto,fonte,cor,pos):
+    tex = fonte.render(texto,True,cor)
+    window.blit(tex,pos)
