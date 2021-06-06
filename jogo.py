@@ -1,6 +1,6 @@
 # Importa configurações
 
-from config import *
+from configuração import *
 
 # Classe que representa o jogo. Será chamada pelo arquivo main.
 
