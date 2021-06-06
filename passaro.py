@@ -16,22 +16,32 @@ class Bird(pygame.sprite.Sprite):
         #adicionando o contador de pontos
         self.contador = 0
         # Jogadores
-        if jogador == 'rosa':
-            for num in range(1,3):
+        if jogador == 'galinha':
+            for num in range(1,5):
                 #carrega a imagem do pássaro rosa
-                img = pygame.image.load('img-passaro/rosa_{0}.png'.format(num)).convert_alpha()
-                img = pygame.transform.scale(img,(51,36))
+                img = pygame.image.load('bird/galinha{0}.png'.format(num)).convert_alpha()
+                img = pygame.transform.scale(img,(48,30))
                 #adiciona a imagem
                 self.images.append(img)
             #configura o pulo e a frequência 
             self.pulo = 10
-            self.freq = freq - 200
-        elif jogador == 'bege':
-            for num in range(1,3):
+            self.freq = freq - 50
+        elif jogador == 'verde':
+            for num in range(1,5):
                 #carrega a imagem do pássaro bege
-                img = pygame.image.load('img-passaro/bege_{0}.png'.format(num)).convert_alpha()
+                img = pygame.image.load('bird/verde ({0}).png'.format(num)).convert_alpha()
                 img = pygame.transform.scale(img,(51,36))
                 self.images.append(img)
+            #configura o pulo e a frequência 
+            self.pulo = 10
+            self.freq = freq 
+        elif jogador == 'amarelo':
+            for num in range(1,5):
+                img = pygame.image.load('bird/amarelo1 ({0}).png'.format(num)).convert_alpha()
+                img = pygame.transform.scale(img,(30,20))
+                self.images.append(img)
+            self.pulo = 9
+            self.freq = freq + 70
             #configura o pulo e a frequência dele 
             #note que é diferente do jogador rosa, ocasionando diferenças no jogo
             self.pulo = 8
@@ -61,8 +71,8 @@ class Bird(pygame.sprite.Sprite):
             # Limitando a velocidade mínima e máxima
             if self.vel > 8:
                 self.vel = 8
-            if self.vel < -10:
-                self.vel = -10
+            if self.vel < -self.pulo:
+                self.vel = -self.pulo
             
             
         # Caso o passaro não caia no chão
