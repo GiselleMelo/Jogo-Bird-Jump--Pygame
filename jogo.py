@@ -4,7 +4,7 @@ from configuração import *
 import sys
 import random
 from passaro import Bird
-from obstáculos import Obstaculos
+from obstáculos import Pipe
 
 
 # Classe que representa o jogo. Será chamada pelo arquivo main.
@@ -239,7 +239,7 @@ class Jogo:
             if self.acabou == False:
                 self.acabou = True
                 #adicionando o som
-                self.assets['morte'].play()
+                #self.assets['morte'].play()
                 #guardando o momento
                 self.momento = pygame.time.get_ticks()
             else:    
@@ -315,4 +315,24 @@ class Jogo:
     
     def fim_inicial(self):
         if self.score > self.highscore:
-            self.highscore = self.score      
+            self.highscore = self.score   
+
+    #Método que define o fim de eventos
+    def fim_eventos(self):
+        #finaliza cada um 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                self.state = 'TRANSIÇÃO'
+            #m volta pro menu
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                self.game = False
+                self.highscore=0
+                self.state = 'ACABOU'
+
+    #fim draw aparece aqui
+    def fim_draw(self):
+        pygame.display.update()
+        

@@ -4,7 +4,7 @@ import pygame
 from configuração import *
 
 #Cria a classe dos obstáculos
-class Obstaculos(pygame.sprite.Sprite):
+class Pipe(pygame.sprite.Sprite):
 
     #Define a função inicializadora da classe
     
