@@ -34,6 +34,16 @@ def load_assets():
     #tela final 
     assets['fim'] = pygame.image.load('imagens/final.png').convert()
     assets['fim'] =  pygame.transform.scale(assets['fim'],(WIDTH,HEIGHT))
+    #tela inicial 
+    assets['verde'] = pygame.image.load('bird/verde (2).png').convert_alpha()
+    assets['verde'] = pygame.transform.scale(assets['verde'], (71,56))
+    assets['verde'] = pygame.transform.rotate(assets['verde'], 30)
+    assets['galinha'] = pygame.image.load('bird/galinha1.png').convert_alpha()
+    assets['galinha'] = pygame.transform.scale(assets['galinha'], (68,50))
+    assets['galinha'] = pygame.transform.rotate(assets['galinha'], 30)
+    assets['amarelo'] = pygame.image.load('bird/amarelo1 (1).png').convert_alpha()
+    assets['amarelo'] = pygame.transform.scale(assets['amarelo'], (50,45))
+    assets['amarelo'] = pygame.transform.rotate(assets['amarelo'], 30)
     
     assets['bg'] = []
     #carregando os backgrounds png na lista

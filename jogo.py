@@ -120,8 +120,12 @@ class Jogo:
     #Método que vai atualizar as informações recebidas no display
     def ini_draw(self):
         pygame.display.update()
-        pygame.Surface.fill(self.window,(255,255,255))
-
+        self.window.blit(self.assets['ini'],(0,0))
+        draw_texto(self.window,'Bird Jump',self.assets['fonte3'],(255,255,0),(150,75))
+        draw_texto(self.window,"Pressione espaço para começar!",self.assets['fonte2'],(255,255,255),(95,400))
+        self.window.blit(self.assets['verde'],(350,250))
+        self.window.blit(self.assets['galinha'],(50,250))
+        self.window.blit(self.assets['amarelo'],(200,250))
 ##################################### TRANSIÇÃO ####################################################
     #Método que apresenta a seleção dos personagens
     # A princípio foram idealizados três personagens: a galinha, o verde, e o amarelo. 
@@ -253,7 +257,7 @@ class Jogo:
             if self.acabou == False:
                 self.acabou = True
                 #adicionando o som
-                #self.assets['morte'].play()
+                self.assets['morte'].play()
                 #guardando o momento
                 self.momento = pygame.time.get_ticks()
             else:    
