@@ -167,7 +167,15 @@ class Jogo:
     def trans_draw(self):
          pygame.display.update()
          if self.muda_tela == False:
-             pygame.Surface.fill(self.window,(255,255,255))
+            self.window.blit(self.assets['trans1'],(0,0))
+            draw_texto(self.window,'Como jogar:', self.assets['fonte3'], (0,0,0), (50,50))
+            draw_texto(self.window,'Pule para desviar dos canos!', self.assets['fonte2'], (0,0,0), (25,150))
+            draw_texto(self.window,'Aperte "espaço" para pular', self.assets['fonte2'], (0,0,0), (25,220))
+            draw_texto(self.window,'Aperte "M" para remover a música', self.assets['fonte2'], (0,0,0), (25,280))
+            draw_texto(self.window,'A dificuldade aumenta a cada 5 canos!', self.assets['fonte2'], (0,0,0), (25,340))
+            draw_texto(self.window,'Para maior conforto, o pássaro começará parado', self.assets['fonte2'], (0,0,0), (25,400))
+            draw_texto(self.window,'Personagens mudam as condições do jogo', self.assets['fonte2'], (0,0,0), (25,460))
+            draw_texto(self.window,'Aperte "espaço" para continuar', self.assets['fonte2'], (0,0,0), (160,550))
          else:
              pygame.Surface.fill(self.window,(255,0,255))
 

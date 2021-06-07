@@ -29,8 +29,8 @@ def load_assets():
     assets['trans1'] = pygame.image.load('imagens/transicao.jpg').convert()
     assets['trans1'] =  pygame.transform.scale(assets['trans1'],(WIDTH,HEIGHT))
     #segunda tela de transição que será implementada posteriormente, onde ficará a escolha dos personagens
-    #assets['trans2'] = pygame.image.load('imagens/transicao2.jpg').convert()
-    #assets['trans2'] =  pygame.transform.scale(assets['trans2'],(WIDTH,HEIGHT))
+    assets['trans2'] = pygame.image.load('imagens/transicao2.jpg').convert()
+    assets['trans2'] =  pygame.transform.scale(assets['trans2'],(WIDTH,HEIGHT))
     #tela final 
     assets['fim'] = pygame.image.load('imagens/final.png').convert()
     assets['fim'] =  pygame.transform.scale(assets['fim'],(WIDTH,HEIGHT))
