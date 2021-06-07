@@ -354,4 +354,10 @@ class Jogo:
     #fim draw aparece aqui
     def fim_draw(self):
         pygame.display.update()
-        
+        self.window.blit(self.assets['fim'],(0,0))
+        draw_texto(self.window,'Você perdeu!',self.assets['fonte3'],(255,255,255),(100,50))
+        draw_texto(self.window,'Que deselegante!', self.assets['fonte3'], (0,0,0), (65,100))
+        draw_texto(self.window,"Placar: {0}".format(self.score),self.assets['fonte3'],(255,255,255),(150,200))
+        draw_texto(self.window,"High score: {0}".format(self.highscore),self.assets['fonte3'],(255,255,255),(110,280))
+        draw_texto(self.window,"Aperte espaço para continuar",self.assets['fonte2'],(255,255,255),(110,380))
+        draw_texto(self.window,'ou "M" para voltar a tela de início',self.assets['fonte2'],(255,255,255),(110,430))
