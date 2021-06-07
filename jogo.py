@@ -276,3 +276,19 @@ class Jogo:
             # Espera 3 segundos para permitir passar outro nível
             elif now - self.momento_passa_nível >= 3000:
                 self.passa_nível = True
+    
+    #Método que exibe na tela 
+    def jog_draw(self):
+        # Desenho dos sprites e background
+        pygame.display.update()
+        self.window.blit(self.bg,(0,0))
+        self.all_birds.draw(self.window)
+        self.all_birds.update()
+        self.all_pipes.draw(self.window)
+        self.all_pipes.update()
+        self.window.blit(self.assets['ground'],(self.ground_scroll,g_HEIGHT))
+        #desenhando placar e nível 
+        draw_texto(self.window,str(self.score),self.assets['fonte'],(255,255,255),(225,20))
+        draw_texto(self.window, str('level {0}'.format(self.level)), self.assets['fonte2'], (255,255,255), (15,20))
+        
+        
