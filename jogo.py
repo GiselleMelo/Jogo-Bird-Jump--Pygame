@@ -133,6 +133,8 @@ class Jogo:
         self.jogador_selecionado = ''
         # Nível é inicializado
         self.level = 1
+        # Váriavel auxiliar para a mudança de tela
+        self.muda_tela = False
         # Carrega música de fundo
         pygame.mixer.music.load('sons/som-transição.mp3')
         pygame.mixer.music.play()
@@ -143,13 +145,16 @@ class Jogo:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            # Mudança de tela
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.muda_tela == False:
+                self.muda_tela = True
             # mudança de estado; só ocorre se um personagem foi selecionado
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.jogador_selecionado != '':
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.jogador_selecionado != '' and self.muda_tela:
                 self.state = 'JOGANDO'
             # Escolhendo o personagem
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_c:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_g:
                 self.jogador_selecionado = 'galinha'
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_v:
                 self.jogador_selecionado = 'verde'
             if event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                 self.jogador_selecionado = 'amarelo'
@@ -157,7 +162,10 @@ class Jogo:
     # Atualizando as informações no display
     def trans_draw(self):
          pygame.display.update()
-         pygame.Surface.fill(self.window,(255,255,255))
+         if self.muda_tela == False:
+             pygame.Surface.fill(self.window,(255,255,255))
+         else:
+             pygame.Surface.fill(self.window,(255,0,255))
 
 ######################################## JOGANDO ####################################################
 #Nessa parte o jogo será iniciado para a interação com o jogador
@@ -182,7 +190,7 @@ class Jogo:
         
         # Posição e velocidade do chão
         self.ground_scroll = 0
-        self.ground_vel = - 4
+        self.ground_vel = - 3
         
         # Impede a movimentação do chão e a criação de canos
         self.bateu = False

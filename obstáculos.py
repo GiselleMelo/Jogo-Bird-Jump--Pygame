@@ -32,7 +32,7 @@ class Pipe(pygame.sprite.Sprite):
         
         # Variação aleatória
         
-        self.rand = random.randint(-50,90)
+        self.rand = random.randint(-90,90)
 
         # Velocidade do obstáculo é equivalente a do chão:
         

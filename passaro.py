@@ -25,7 +25,7 @@ class Bird(pygame.sprite.Sprite):
                 self.images.append(img)
             #configura o pulo e a frequência 
             self.pulo = 10
-            self.freq = freq - 50
+            self.freq = freq - 25
         elif jogador == 'verde':
             for num in range(1,5):
                 #carrega a imagem do pássaro bege

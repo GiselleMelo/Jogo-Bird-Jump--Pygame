@@ -5,6 +5,6 @@ jogo = Jogo()
 
 jogo.run()
 
-# No começo do jogo aparece uma tela inicial branca. 
-# Escolha c ou r para testar personagens diferentes e espaço em seguida para inicializar
-# Espaço pula e muda de tela  
+# Siga as instruções para aprender a jogar! É fácil e intuitivo 
+# Escolha g, a ou V para testar personagens diferentes!
+# Espaço muda de telas!
