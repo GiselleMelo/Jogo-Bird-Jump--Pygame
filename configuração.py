@@ -10,7 +10,10 @@ HEIGHT = 600
 g_HEIGHT = 473
     
 # FPS:
-fps = 30
+fps = 60
+
+#frequência de referência para a formação de canos
+freq=1500
 
 # Altura inicial do pássaro:
 b_ini = (HEIGHT/2) - 100

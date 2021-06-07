@@ -1,6 +1,11 @@
 # Importa configurações
 
 from configuração import *
+import sys
+import random
+from passaro import Bird
+from obstáculos import Obstaculos
+
 
 # Classe que representa o jogo. Será chamada pelo arquivo main.
 
@@ -158,6 +163,13 @@ class Jogo:
         self.all_pipes = pygame.sprite.Group()
         self.all_birds = pygame.sprite.Group()
         self.all_birds.add(self.bird)
+        # Escolhe um background aleatório da lista
+        self.bg = random.choice(self.assets['bg'])
+        # Depois de escolhida, é removida da lista
+        self.assets['bg'].remove(self.bg)
+        # Se não restar mais imagens, reinicia
+        if len(self.assets['bg']) == 0:
+            self.assets = load_assets()
         
         # Impede de segurar o botão para voar constantemente
         self.apertado = False
