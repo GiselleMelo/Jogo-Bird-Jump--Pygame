@@ -12,6 +12,11 @@ class Jogo:
 
         # Inicializando o pygame
         pygame.init()
+        
+        # Inicializando música
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.set_volume(0.5)
 
         # Configurando a tela
         self.window = pygame.display.set_mode((WIDTH,HEIGHT))
@@ -30,6 +35,9 @@ class Jogo:
         
         # Variável que condiciona o loop principal
         self.rodando = True
+
+        # Varíavel que representa o high score
+        self.highscore = 0
 
 ###################################### Estrutura de um jogo ##########################################
     
@@ -291,4 +299,8 @@ class Jogo:
         draw_texto(self.window,str(self.score),self.assets['fonte'],(255,255,255),(225,20))
         draw_texto(self.window, str('level {0}'.format(self.level)), self.assets['fonte2'], (255,255,255), (15,20))
         
-        
+########################################### FIM ######################################################
+    
+    def fim_inicial(self):
+        if self.score > self.highscore:
+            self.highscore = self.score      
