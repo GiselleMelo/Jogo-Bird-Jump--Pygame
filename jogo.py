@@ -166,6 +166,7 @@ class Jogo:
     # Atualizando as informações no display
     def trans_draw(self):
          pygame.display.update()
+         # Primeira tela da transição
          if self.muda_tela == False:
             self.window.blit(self.assets['trans1'],(0,0))
             draw_texto(self.window,'Como jogar:', self.assets['fonte3'], (0,0,0), (50,50))
@@ -176,8 +177,16 @@ class Jogo:
             draw_texto(self.window,'Para maior conforto, o pássaro começará parado', self.assets['fonte2'], (0,0,0), (25,400))
             draw_texto(self.window,'Personagens mudam as condições do jogo', self.assets['fonte2'], (0,0,0), (25,460))
             draw_texto(self.window,'Aperte "espaço" para continuar', self.assets['fonte2'], (0,0,0), (160,550))
+        # Segunda tela da transição
          else:
-             pygame.Surface.fill(self.window,(255,0,255))
+             self.window.blit(self.assets['trans2'],(0,0))
+             draw_texto(self.window,'Seleção de pássaro', self.assets['fonte3'], (0,0,0), (40,50))
+             draw_texto(self.window,'Aperte "G"', self.assets['fonte2'], (0,0,0), (50,350))
+             draw_texto(self.window,'Aperte "V"', self.assets['fonte2'], (0,0,0), (350,350))
+             draw_texto(self.window,'Aperte "A"', self.assets['fonte2'], (0,0,0), (190,400))
+             self.window.blit(self.assets['galinha'],(50,250))
+             self.window.blit(self.assets['verde'],(350,250))
+             self.window.blit(self.assets['amarelo'],(200,250))
 
 ######################################## JOGANDO ####################################################
 #Nessa parte o jogo será iniciado para a interação com o jogador
