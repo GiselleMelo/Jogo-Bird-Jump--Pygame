@@ -39,6 +39,11 @@ def load_assets():
     assets['fonte'] = pygame.font.SysFont('Bauhaus 93',40)
     assets['fonte2'] = pygame.font.SysFont('Bauhaus 93',20)
     assets['fonte3'] = pygame.font.SysFont('Bauhaus 93',47)
+    # Importando sons:
+    assets['morte'] = pygame.mixer.Sound('sons/som-morte.mp3')
+    assets['fase'] = pygame.mixer.Sound('sons/som-fases.mp3')
+    assets['cano'] = pygame.mixer.Sound('sons/som-cano.mp3')
+    assets['pulo'] = pygame.mixer.Sound('sons/som-pulo.mp3')
     return assets 
 
 # Função auxiliadora para exibir texto:

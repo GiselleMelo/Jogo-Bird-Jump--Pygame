@@ -99,6 +99,9 @@ class Jogo:
     def ini_inicial(self):
         #configurando o estado como INICIAL.
         self.state = 'INICIAL'
+        # Carregando música de fundo
+        pygame.mixer.music.load('sons/som-inicial.mp3')
+        pygame.mixer.music.play()
 
     #Método que define os eventos no estado inicial.
     #A partir da tecla que a pessoa seleciona há uma iteração com o 'eventos'.
@@ -130,6 +133,9 @@ class Jogo:
         self.jogador_selecionado = ''
         # Nível é inicializado
         self.level = 1
+        # Carrega música de fundo
+        pygame.mixer.music.load('sons/som-transição.mp3')
+        pygame.mixer.music.play()
     
     # Seleção de personagens
     def trans_eventos(self):
@@ -157,6 +163,10 @@ class Jogo:
 #Nessa parte o jogo será iniciado para a interação com o jogador
     
     def jog_inicial(self):
+
+        # Carregando música de fundo
+        pygame.mixer.music.load('sons/som-jogo.mp3') 
+        pygame.mixer.music.play()
         
         # Inicializando sprites/grupos
         self.bird = Bird(self.jogador_selecionado)
@@ -239,7 +249,7 @@ class Jogo:
             if self.acabou == False:
                 self.acabou = True
                 #adicionando o som
-                #self.assets['morte'].play()
+                self.assets['morte'].play()
                 #guardando o momento
                 self.momento = pygame.time.get_ticks()
             else:    
@@ -276,6 +286,9 @@ class Jogo:
                 self.passou = True
             # verifica se saiu do cano
             if self.bird.rect.left > self.all_pipes.sprites()[0].rect.right and self.passou == True:
+                # Toca som
+                self.assets['cano'].set_volume(0.4)
+                self.assets['cano'].play()
                 self.passou = False
                 # adiciona um ponto ao placar
                 self.score += 1
@@ -289,6 +302,9 @@ class Jogo:
             if self.passa_nível:
                 self.passa_nível = False 
                 self.level += 1
+                # Toca som de fase
+                self.assets['fase'].set_volume(0.4)
+                self.assets['fase'].play()
                 # guarda o momento
                 self.momento_passa_nível = pygame.time.get_ticks()
                 # Aumenta a velocidade dos canos
@@ -314,6 +330,9 @@ class Jogo:
 ########################################### FIM ######################################################
     
     def fim_inicial(self):
+        # Carregando música de fundo:
+        pygame.mixer.music.load('sons/som-final.mp3') 
+        pygame.mixer.music.play()
         if self.score > self.highscore:
             self.highscore = self.score   
 
