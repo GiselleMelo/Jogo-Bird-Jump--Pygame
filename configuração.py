@@ -21,8 +21,21 @@ b_ini = (HEIGHT/2) - 100
 #Função que inicia os assets(será chamada pela classe do jogo)
 def load_assets():
     assets = {}
-    assets['bg'] = []
+    #importando as imagens para as telas
+    #inicio
+    assets['ini'] = pygame.image.load('imagens/inicio.png').convert()
+    assets['ini'] =  pygame.transform.scale(assets['ini'],(WIDTH,HEIGHT))
+    #primeira tela de transição
+    assets['trans1'] = pygame.image.load('imagens/transicao.jpg').convert()
+    assets['trans1'] =  pygame.transform.scale(assets['trans1'],(WIDTH,HEIGHT))
+    #segunda tela de transição que será implementada posteriormente, onde ficará a escolha dos personagens
+    #assets['trans2'] = pygame.image.load('imagens/transicao2.jpg').convert()
+    #assets['trans2'] =  pygame.transform.scale(assets['trans2'],(WIDTH,HEIGHT))
+    #tela final 
+    assets['fim'] = pygame.image.load('imagens/final.png').convert()
+    assets['fim'] =  pygame.transform.scale(assets['fim'],(WIDTH,HEIGHT))
     
+    assets['bg'] = []
     #carregando os backgrounds png na lista
     for i in range(1,5):
         img = pygame.image.load('imagens/bg_{0}.png'.format(i)).convert()
@@ -43,7 +56,6 @@ def load_assets():
     assets['morte'] = pygame.mixer.Sound('sons/som-morte.mp3')
     assets['fase'] = pygame.mixer.Sound('sons/som-fases.mp3')
     assets['cano'] = pygame.mixer.Sound('sons/som-cano.mp3')
-    assets['pulo'] = pygame.mixer.Sound('sons/som-pulo.mp3')
     return assets 
 
 # Função auxiliadora para exibir texto:

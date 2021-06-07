@@ -163,10 +163,6 @@ class Jogo:
 #Nessa parte o jogo será iniciado para a interação com o jogador
     
     def jog_inicial(self):
-
-        # Carregando música de fundo
-        pygame.mixer.music.load('sons/som-jogo.mp3') 
-        pygame.mixer.music.play()
         
         # Inicializando sprites/grupos
         self.bird = Bird(self.jogador_selecionado)
@@ -249,7 +245,7 @@ class Jogo:
             if self.acabou == False:
                 self.acabou = True
                 #adicionando o som
-                self.assets['morte'].play()
+                #self.assets['morte'].play()
                 #guardando o momento
                 self.momento = pygame.time.get_ticks()
             else:    
@@ -272,6 +268,10 @@ class Jogo:
             # Inicia o jogo (movimento do cano, pássaro, etc)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.bird.voando == False:
                 self.bird.voando = True
+            #caso o jogador queira tirar o som de fundo, por questão de comodidade
+            #os efeitos sonoros irão continuar
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                pygame.mixer.music.stop()
             
                 
         # Aumentar o placar:
