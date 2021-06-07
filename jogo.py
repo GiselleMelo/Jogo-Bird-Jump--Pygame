@@ -1,5 +1,5 @@
 # Importa configurações
-
+import pygame
 from configuração import *
 import sys
 import random
@@ -97,6 +97,8 @@ class Jogo:
     # Ela tem fins estéticos; para apresentar o jogo 
 
     def ini_inicial(self):
+        #reinicia o loop de game play caso o jogador volte para o inicial 
+        self.game = True
         #configurando o estado como INICIAL.
         self.state = 'INICIAL'
         # Carregando música de fundo
@@ -190,9 +192,11 @@ class Jogo:
 
 ######################################## JOGANDO ####################################################
 #Nessa parte o jogo será iniciado para a interação com o jogador
-    
+
     def jog_inicial(self):
-        
+        #alterando para a música do jogo
+        pygame.mixer.music.load('sons/som-jogo.mp3') 
+        pygame.mixer.music.play()
         # Inicializando sprites/grupos
         self.bird = Bird(self.jogador_selecionado)
         self.all_pipes = pygame.sprite.Group()
