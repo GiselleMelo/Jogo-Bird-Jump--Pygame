@@ -11,34 +11,39 @@ class Bird(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         #adicionando as imagens para projetar
         self.images = []
+        #adicionando as imagens após colisões
+        self.imagesres =[]
         #índice inicial da lista
         self.index = 0
         #adicionando o contador de pontos
         self.contador = 0
         # Jogadores
         if jogador == 'galinha':
+            self.dimensao = (48,30)
             for num in range(1,5):
                 #carrega a imagem do pássaro rosa
                 img = pygame.image.load('bird/galinha{0}.png'.format(num)).convert_alpha()
-                img = pygame.transform.scale(img,(48,30))
+                img = pygame.transform.scale(img,self.dimensao)
                 #adiciona a imagem
                 self.images.append(img)
             #configura o pulo e a frequência 
             self.pulo = 10
             self.freq = freq - 25
         elif jogador == 'verde':
+            self.dimensao = (51,36)
             for num in range(1,5):
                 #carrega a imagem do pássaro bege
                 img = pygame.image.load('bird/verde ({0}).png'.format(num)).convert_alpha()
-                img = pygame.transform.scale(img,(51,36))
+                img = pygame.transform.scale(img,self.dimensao)
                 self.images.append(img)
             #configura o pulo e a frequência 
             self.pulo = 8
             self.freq = freq 
         elif jogador == 'amarelo':
+            self.dimensao = (30,20)
             for num in range(1,5):
                 img = pygame.image.load('bird/amarelo1 ({0}).png'.format(num)).convert_alpha()
-                img = pygame.transform.scale(img,(30,20))
+                img = pygame.transform.scale(img,self.dimensao)
                 self.images.append(img)
             #configura o pulo e a frequência dele 
             #note que é diferente do jogador rosa, ocasionando diferenças no jogo
@@ -115,3 +120,8 @@ class Bird(pygame.sprite.Sprite):
         # Função do pulo. Não funciona quando jogador bate no cano ou no chão.
         if self.pode_pular == True:
             self.vel -= self.pulo
+
+    #muda a lista de imagens para a dos pássaros pós colisão com o cano
+    def troca(self):
+        self.index = 0
+        self.images = self.imagesres

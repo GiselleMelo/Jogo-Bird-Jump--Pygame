@@ -186,6 +186,7 @@ class Jogo:
              draw_texto(self.window,'Aperte "G"', self.assets['fonte2'], (0,0,0), (50,350))
              draw_texto(self.window,'Aperte "V"', self.assets['fonte2'], (0,0,0), (350,350))
              draw_texto(self.window,'Aperte "A"', self.assets['fonte2'], (0,0,0), (190,400))
+             draw_texto(self.window,'Aperte espaço para continuar', self.assets['fonte2'], (0,0,0), (110,500))
              self.window.blit(self.assets['galinha'],(50,250))
              self.window.blit(self.assets['verde'],(350,250))
              self.window.blit(self.assets['amarelo'],(200,250))
@@ -233,6 +234,12 @@ class Jogo:
         self.momento_passa_nível = pygame.time.get_ticks()
         self.passa_nível = True
     
+        #loop que adiciona as imagens de colisão
+        for i in range(1,3):
+            img = pygame.image.load('bird/{0}_bate{1}.png'.format(self.jogador_selecionado,i)).convert_alpha()
+            img = pygame.transform.scale(img,self.bird.dimensao)
+            self.bird.imagesres.append(img)
+    
 
     def jog_eventos(self):
         
@@ -279,6 +286,8 @@ class Jogo:
                 self.acabou = True
                 #adicionando o som
                 self.assets['morte'].play()
+                #mudança para as imagens após a colisão
+                self.bird.troca()
                 #guardando o momento
                 self.momento = pygame.time.get_ticks()
             else:    
