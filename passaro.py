@@ -33,19 +33,17 @@ class Bird(pygame.sprite.Sprite):
                 img = pygame.transform.scale(img,(51,36))
                 self.images.append(img)
             #configura o pulo e a frequência 
-            self.pulo = 10
+            self.pulo = 8
             self.freq = freq 
         elif jogador == 'amarelo':
             for num in range(1,5):
                 img = pygame.image.load('bird/amarelo1 ({0}).png'.format(num)).convert_alpha()
                 img = pygame.transform.scale(img,(30,20))
                 self.images.append(img)
-            self.pulo = 9
-            self.freq = freq + 70
             #configura o pulo e a frequência dele 
             #note que é diferente do jogador rosa, ocasionando diferenças no jogo
-            self.pulo = 8
-            self.freq = freq
+            self.pulo = 9
+            self.freq = freq + 70
         #atualiza a imagem sempre que ela muda
         self.image = self.images[self.index]
         #gera um retângulo a partir da imagem
