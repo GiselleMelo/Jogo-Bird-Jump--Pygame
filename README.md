@@ -2,8 +2,8 @@
 
 ## Sobre:
 
-  * Bird Jump é um jogo feito por @rafakatri, @GiselleMelo e @NatanLewi.
-  * Ele é o projeto final do curso de Design de Software do INSPER do primeiro semestre de engenharia.
+  * Bird Jump é um jogo feito por [Rafael Katri](https://github.com/rafakatri), [Giselle Melo](https://github.com/GiselleMelo) e [Natan Lewi](https://github.com/NatanLewi).
+  * Este é o projeto final do curso de Design de Software do INSPER do primeiro semestre de Engenharia.
   * Feito com a engine pygame.  
   
 
